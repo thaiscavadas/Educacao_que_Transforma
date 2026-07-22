@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Educação que Transforma - Maio 2026</title>
+<title>Educação que Transforma - Julho 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -93,7 +93,7 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
   <div class="header-inner">
     <div class="header-eyebrow">Sebrae · Educação Empreendedora</div>
     <div class="header-title">Execução Programa<br>Educação que Transforma</div>
-    <div class="header-date">Maio 2026</div>
+    <div class="header-date">Julho 2026</div>
     <div class="header-gestora">Gestora: Thais Neves Cavadas</div>
   </div>
 </div>
@@ -113,51 +113,57 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
       <div class="metric-value">6.111.853</div>
     </div>
     <div class="card-sm">
-      <div class="metric-label">Atendimentos realizados</div>
-      <div class="metric-value">665.109</div>
-      <div class="badge badge-green">105% de mai/25</div>
+      <div class="metric-label">Nova meta (repactuação)</div>
+      <div class="metric-value">8.491.624</div>
+      <div class="badge badge-blue">+38,9%</div>
     </div>
   </div>
 
+  <div class="card" style="margin-bottom:8px;">
+    <div class="metric-label">Atendimentos realizados</div>
+    <div class="metric-value" style="font-size:28px;">2.146.194</div>
+    <div class="badge badge-green">165% de jul/25 (1.300.420)</div>
+  </div>
+
   <div class="card" style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;margin-bottom:8px;">
-    <span class="metric-label" style="margin:0;">Previsão (não consolidado)</span>
-    <span style="font-family:'Funnel Display',sans-serif;font-size:18px;font-weight:700;color:var(--azul);">+146.578</span>
+    <span class="metric-label" style="margin:0;">Previsão (não consolidado no FOCO)</span>
+    <span style="font-family:'Funnel Display',sans-serif;font-size:18px;font-weight:700;color:var(--azul);">+191.166</span>
   </div>
 
   <div class="prog-row">
     <div class="prog-card" style="border-top:3px solid var(--azul);">
       <div class="prog-name">Escalada</div>
-      <div class="prog-val">17.480</div><div class="prog-desc">atendimentos</div>
+      <div class="prog-val">35.386</div><div class="prog-desc">atendimentos</div>
       <hr class="prog-divider">
-      <div class="prog-val" style="font-size:14px;">1.692</div>
+      <div class="prog-val" style="font-size:14px;">2.504</div>
       <div class="prog-desc">estudantes atend.</div>
     </div>
     <div class="prog-card" style="border-top:3px solid var(--laranja);">
       <div class="prog-name">Liga Jovem</div>
-      <div class="prog-val">62.557</div><div class="prog-desc">inscritos</div>
+      <div class="prog-val">86.189</div><div class="prog-desc">inscritos</div>
       <hr class="prog-divider">
-      <div class="prog-val" style="font-size:14px;">6.356</div>
+      <div class="prog-val" style="font-size:14px;">10.936</div>
       <div class="prog-desc">equipes válidas</div>
     </div>
     <div class="prog-card" style="border-top:3px solid var(--verde);">
       <div class="prog-name">Supernova</div>
-      <div class="prog-val">11.925</div><div class="prog-desc">inscritos</div>
+      <div class="prog-val">16.061</div><div class="prog-desc">inscritos</div>
       <hr class="prog-divider">
-      <div class="prog-val" style="font-size:14px;">2.012</div>
+      <div class="prog-val" style="font-size:14px;">3.066</div>
       <div class="prog-desc">equipes válidas</div>
     </div>
   </div>
 
   <!-- Comparativo por UF: Estudantes 2025 vs 2026 -->
   <div class="comp-table">
-    <div class="comp-head" style="grid-template-columns:36px 1fr 1fr 60px 44px;">
-      <span>UF</span><span>2025</span><span>2026</span><span>Nacional</span><span>%</span>
+    <div class="comp-head" style="grid-template-columns:32px 1fr 1fr 40px 60px;">
+      <span>UF</span><span>Meta repactuada</span><span>Executado</span><span>%</span><span>Em andamento</span>
     </div>
     <div class="comp-scroll"><div id="uf-est-body"></div></div>
     <div class="legend">
-      <div class="legend-item"><div class="legend-dot" style="background:var(--vermelho)"></div>Crítico (&lt;50%)</div>
-      <div class="legend-item"><div class="legend-dot" style="background:var(--laranja)"></div>Atenção (50–79%)</div>
-      <div class="legend-item"><div class="legend-dot" style="background:var(--verde)"></div>Adequado (80%+)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--vermelho)"></div>Crítico (&lt;30%)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--laranja)"></div>Atenção (30–57%)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--verde)"></div>Adequado (58%+)</div>
     </div>
   </div>
 </div>
@@ -178,27 +184,34 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
       <div class="metric-value">13.340</div>
     </div>
     <div class="card-sm">
-      <div class="metric-label">Impactadas</div>
-      <div class="metric-value">623</div>
-      <div class="badge badge-orange">4,67% da meta</div>
+      <div class="metric-label">Nova meta (repactuação)</div>
+      <div class="metric-value">15.125</div>
+      <div class="badge badge-blue">+13,4%</div>
     </div>
   </div>
   <div class="card-grid-2" style="margin-bottom:8px;">
     <div class="card-sm">
-      <div class="metric-label">ALI (escolas)</div>
-      <div class="metric-value">1.078</div>
-      <div class="metric-sub sub-muted">1.069 públicas</div>
+      <div class="metric-label">Impactadas</div>
+      <div class="metric-value">4.453</div>
+      <div class="badge badge-orange">33,38% da meta</div>
+      <div class="metric-sub sub-muted">29,44% da nova meta</div>
     </div>
     <div class="card-sm">
-      <div class="metric-label">Previsão (não consol.)</div>
-      <div class="metric-value" style="color:var(--azul);">+548</div>
+      <div class="metric-label">ALI (escolas)</div>
+      <div class="metric-value">1.771</div>
+      <div class="metric-sub sub-muted">1.752 públicas</div>
     </div>
+  </div>
+
+  <div class="card" style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;margin-bottom:8px;">
+    <span class="metric-label" style="margin:0;">Previsão (não consolidado no FOCO)</span>
+    <span style="font-family:'Funnel Display',sans-serif;font-size:18px;font-weight:700;color:var(--azul);">+1.409</span>
   </div>
 
   <!-- Comparativo por UF: Instituições executado vs meta -->
   <div class="comp-table">
-    <div class="comp-head" style="grid-template-columns:36px 1fr 1fr 44px;">
-      <span>UF</span><span>Meta</span><span>Exec.</span><span>%</span>
+    <div class="comp-head" style="grid-template-columns:32px 1fr 1fr 40px 56px 38px;">
+      <span>UF</span><span>Meta repactuada</span><span>Executado</span><span>%</span><span>Em andamento</span><span>ALI</span>
     </div>
     <div class="comp-scroll"><div id="uf-inst-body"></div></div>
     <div class="legend">
@@ -207,6 +220,7 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
       <div class="legend-item"><div class="legend-dot" style="background:var(--verde)"></div>20%+</div>
     </div>
   </div>
+
 </div>
 
 <!-- ══════════════════════════════════
@@ -222,12 +236,12 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
   <div class="card-grid-2" style="margin-bottom:8px;">
     <div class="card-sm">
       <div class="metric-label">Profissionais atendidos</div>
-      <div class="metric-value">75.552</div>
+      <div class="metric-value">106.409</div>
     </div>
     <div class="card-sm">
       <div class="metric-label">Qtd. de atendimentos</div>
-      <div class="metric-value">123.333</div>
-      <div class="badge badge-green">186% de mai/25</div>
+      <div class="metric-value">176.563</div>
+      <div class="badge badge-green">100% de jul/25</div>
     </div>
   </div>
 
@@ -235,32 +249,34 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
     <div class="metric-label">Recorrência atual vs meta</div>
     <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;">
       <div>
-        <span style="font-family:'Funnel Display',sans-serif;font-size:26px;font-weight:800;color:var(--verde);">27,9%</span>
+        <span style="font-family:'Funnel Display',sans-serif;font-size:26px;font-weight:800;color:var(--verde);">29,19%</span>
         <span style="font-size:12px;color:var(--text-3);margin-left:4px;">atual</span>
       </div>
-      <span style="font-size:13px;font-weight:500;color:var(--text-3);">meta: 29,84%</span>
+      <div style="text-align:right;">
+        <div style="font-size:13px;font-weight:600;color:var(--text-2);">nova meta: 34%</div>
+        <div style="font-size:10px;color:var(--text-3);">meta anterior: 29,84%</div>
+      </div>
     </div>
-    <div class="recor-bar-bg"><div class="recor-bar-fill" style="width:93.5%"></div></div>
-    <div class="recor-gap">▼ 1,94 p.p. abaixo da meta</div>
+    <div class="recor-bar-bg"><div class="recor-bar-fill" style="width:85.9%"></div></div>
   </div>
 
   <div class="card-grid-2" style="margin-bottom:8px;">
     <div class="card-sm">
       <div class="metric-label">Previsão (não consol.)</div>
-      <div class="metric-value" style="color:var(--azul);">+6.460</div>
+      <div class="metric-value" style="color:var(--azul);">+9.733</div>
       <div class="metric-sub sub-muted">atendimentos</div>
     </div>
     <div class="card-sm">
       <div class="metric-label">CER</div>
-      <div class="metric-value">10.607</div>
-      <div class="metric-sub sub-muted">63% de recorrência</div>
+      <div class="metric-value">15.644</div>
+      <div class="metric-sub sub-muted">64% de recorrência</div>
     </div>
   </div>
 
   <!-- Comparativo por UF: Profissionais 2025 vs 2026 -->
   <div class="comp-table">
-    <div class="comp-head" style="grid-template-columns:36px 1fr 1fr 60px 44px;">
-      <span>UF</span><span>2025</span><span>2026</span><span>Nacional</span><span>%</span>
+    <div class="comp-head" style="grid-template-columns:40px 1fr 1fr 56px;">
+      <span>UF</span><span>2025</span><span>2026</span><span>%</span>
     </div>
     <div class="comp-scroll"><div id="uf-prof-body"></div></div>
     <div class="legend">
@@ -277,12 +293,18 @@ function fmt(n){return n.toLocaleString("pt-BR");}
 function renderRows(containerId, data, cols, colorFn, capBar) {
   const body = document.getElementById(containerId);
   data.forEach(r => {
-    const c = colorFn(r.pct);
+    const c = colorFn(r.pct, r);
     const barW = Math.min(capBar ? r.pct/capBar*100 : r.pct, 100);
     const hasNa = r.na !== undefined;
     const naPct = hasNa ? Math.round(r.na / r.v2 * 100) : null;
     const naCell = hasNa
       ? `<span class="comp-num" style="text-align:right;">${fmt(r.na)}<br><span style="font-size:9px;color:var(--azul);font-weight:700;">${naPct}%</span></span>`
+      : "";
+    const nbCell = r.nb !== undefined
+      ? `<span class="comp-num" style="text-align:right;color:var(--azul);font-weight:600;">${r.nb ? fmt(r.nb) : "—"}</span>`
+      : "";
+    const ncCell = r.nc !== undefined
+      ? `<span class="comp-num" style="text-align:right;color:var(--verde);font-weight:600;">${r.nc ? fmt(r.nc) : "—"}</span>`
       : "";
     const w = document.createElement("div");
     w.innerHTML = `
@@ -292,6 +314,8 @@ function renderRows(containerId, data, cols, colorFn, capBar) {
         <span class="comp-num2">${fmt(r.v2)}</span>
         ${naCell}
         <span class="comp-pct ${c.cls}">${r.pct}%</span>
+        ${nbCell}
+        ${ncCell}
       </div>
       <div class="comp-bar-row">
         <div class="comp-bar-bg">
@@ -304,114 +328,114 @@ function renderRows(containerId, data, cols, colorFn, capBar) {
 
 // ── Estudantes 2025 vs 2026 ──
 const estData = [
-  {uf:"RS",v1:81495, v2:3562, na:2925, pct:4 },
-  {uf:"PR",v1:89475, v2:43857, na:4179, pct:49 },
-  {uf:"CE",v1:3697, v2:2244, na:2244, pct:61 },
-  {uf:"RJ",v1:29901, v2:18251, na:5945, pct:61 },
-  {uf:"GO",v1:146090, v2:102923, na:2463, pct:70 },
-  {uf:"PE",v1:36835, v2:26079, na:2660, pct:71 },
-  {uf:"MA",v1:14704, v2:12952, na:1255, pct:88 },
-  {uf:"TO",v1:24041, v2:21277, na:693, pct:89 },
-  {uf:"AM",v1:12593, v2:11161, na:971, pct:89 },
-  {uf:"SP",v1:110951, v2:106663, na:17022, pct:96 },
-  {uf:"RN",v1:8572, v2:12331, na:8120, pct:144 },
-  {uf:"AC",v1:364, v2:629, na:158, pct:173 },
-  {uf:"PA",v1:3398, v2:7826, na:1508, pct:230 },
-  {uf:"DF",v1:7723, v2:18033, na:2186, pct:233 },
-  {uf:"PB",v1:1917, v2:4602, na:2113, pct:240 },
-  {uf:"PI",v1:5903, v2:14785, na:769, pct:250 },
-  {uf:"BA",v1:10924, v2:31872, na:4609, pct:292 },
-  {uf:"ES",v1:4057, v2:12214, na:1218, pct:301 },
-  {uf:"AL",v1:1268, v2:4305, na:2849, pct:340 },
-  {uf:"MS",v1:2004, v2:7454, na:822, pct:372 },
-  {uf:"SC",v1:8806, v2:35193, na:2343, pct:400 },
-  {uf:"RO",v1:4545, v2:18291, na:1518, pct:402 },
-  {uf:"MG",v1:11520, v2:85737, na:6206, pct:744 },
-  {uf:"AP",v1:360, v2:3529, na:337, pct:980 },
-  {uf:"SE",v1:878, v2:13056, na:706, pct:1487 },
-  {uf:"RR",v1:322, v2:5084, na:136, pct:1579 },
-  {uf:"MT",v1:1918, v2:41238, na:1352, pct:2150 },
+  {uf:"RR",v1:29588,   v2:23944,  nb:39,    pct:81},
+  {uf:"MT",v1:110000,  v2:89013,  nb:2676,  pct:81},
+  {uf:"GO",v1:220000,  v2:174224, nb:2264,  pct:79},
+  {uf:"PI",v1:70000,   v2:49258,  nb:62,    pct:70},
+  {uf:"PA",v1:30900,   v2:19110,  nb:623,   pct:62},
+  {uf:"MG",v1:752400,  v2:430342, nb:27737, pct:57},
+  {uf:"SC",v1:136100,  v2:76281,  nb:990,   pct:56},
+  {uf:"PR",v1:725000,  v2:395013, nb:1786,  pct:54},
+  {uf:"SE",v1:92700,   v2:44195,  nb:116,   pct:48},
+  {uf:"AL",v1:37000,   v2:17464,  nb:5,     pct:47},
+  {uf:"AM",v1:40000,   v2:16295,  nb:0,     pct:41},
+  {uf:"PE",v1:309000,  v2:111216, nb:4079,  pct:36},
+  {uf:"TO",v1:80000,   v2:27935,  nb:284,   pct:35},
+  {uf:"RN",v1:150000,  v2:51073,  nb:283,   pct:34},
+  {uf:"RO",v1:75100,   v2:25396,  nb:8452,  pct:34},
+  {uf:"PB",v1:180000,  v2:57501,  nb:2260,  pct:32},
+  {uf:"ES",v1:74125,   v2:18753,  nb:72,    pct:25},
+  {uf:"AP",v1:25000,   v2:6246,   nb:2391,  pct:25},
+  {uf:"BA",v1:346135,  v2:76280,  nb:20064, pct:22},
+  {uf:"RJ",v1:430000,  v2:87180,  nb:377,   pct:20},
+  {uf:"MS",v1:84000,   v2:12582,  nb:58817, pct:15},
+  {uf:"MA",v1:151900,  v2:20602,  nb:187,   pct:14},
+  {uf:"DF",v1:620000,  v2:62367,  nb:116,   pct:10},
+  {uf:"SP",v1:2900000, v2:240960, nb:0,     pct:8 },
+  {uf:"AC",v1:26376,   v2:685,    nb:40,    pct:3 },
+  {uf:"RS",v1:353000,  v2:6053,   nb:40230, pct:2 },
+  {uf:"CE",v1:443300,  v2:6148,   nb:17216, pct:1 },
 ];
 function estColor(p){
-  if(p<50) return {cls:"pct-red",   bar:"#D94633"};
-  if(p<80) return {cls:"pct-orange",bar:"#FF9059"};
+  if(p<30) return {cls:"pct-red",   bar:"#D94633"};
+  if(p<58) return {cls:"pct-orange",bar:"#FF9059"};
   return          {cls:"pct-green", bar:"#005952"};
 }
-renderRows("uf-est-body", estData, "36px 1fr 1fr 60px 44px", estColor, 100);
+renderRows("uf-est-body", estData, "32px 1fr 1fr 40px 60px", estColor, 100);
 
 // ── Instituições meta vs executado ──
 const instData = [
-  {uf:"GO",v1:200,  v2:149,pct:75},
-  {uf:"MG",v1:2670, v2:260,pct:10},
-  {uf:"PR",v1:2820, v2:172,pct:6 },
-  {uf:"SE",v1:165,  v2:9,  pct:5 },
-  {uf:"PA",v1:80,   v2:3,  pct:4 },
-  {uf:"PI",v1:275,  v2:7,  pct:3 },
-  {uf:"PE",v1:660,  v2:12, pct:2 },
-  {uf:"RR",v1:275,  v2:5,  pct:2 },
-  {uf:"PB",v1:60,   v2:1,  pct:2 },
-  {uf:"MA",v1:350,  v2:4,  pct:1 },
-  {uf:"MT",v1:225,  v2:1,  pct:0 },
-  {uf:"AC",v1:90,   v2:0,  pct:0 },
-  {uf:"AL",v1:100,  v2:0,  pct:0 },
-  {uf:"AM",v1:95,   v2:0,  pct:0 },
-  {uf:"AP",v1:65,   v2:0,  pct:0 },
-  {uf:"BA",v1:770,  v2:0,  pct:0 },
-  {uf:"CE",v1:1480, v2:0,  pct:0 },
-  {uf:"DF",v1:845,  v2:0,  pct:0 },
-  {uf:"ES",v1:480,  v2:0,  pct:0 },
-  {uf:"MS",v1:165,  v2:0,  pct:0 },
-  {uf:"RJ",v1:300,  v2:0,  pct:0 },
-  {uf:"RN",v1:220,  v2:0,  pct:0 },
-  {uf:"RO",v1:220,  v2:0,  pct:0 },
-  {uf:"RS",v1:180,  v2:0,  pct:0 },
-  {uf:"SC",v1:285,  v2:0,  pct:0 },
-  {uf:"SP",v1:1640, v2:0,  pct:0 },
-  {uf:"TO",v1:85,   v2:0,  pct:0 },
+  {uf:"PA",v1:80,   v2:50,   nb:8,   pct:62, nc:0},
+  {uf:"GO",v1:570,  v2:356,  nb:22,  pct:62, nc:0},
+  {uf:"PR",v1:3680, v2:2280, nb:23,  pct:62, nc:0},
+  {uf:"MG",v1:2670, v2:1304, nb:113, pct:49, nc:471},
+  {uf:"SE",v1:165,  v2:70,   nb:0,   pct:42, nc:113},
+  {uf:"SC",v1:285,  v2:109,  nb:7,   pct:38, nc:0},
+  {uf:"RR",v1:120,  v2:38,   nb:0,   pct:32, nc:0},
+  {uf:"PE",v1:255,  v2:73,   nb:21,  pct:29, nc:238},
+  {uf:"RN",v1:440,  v2:95,   nb:2,   pct:22, nc:0},
+  {uf:"AL",v1:100,  v2:16,   nb:0,   pct:16, nc:9},
+  {uf:"AM",v1:95,   v2:10,   nb:0,   pct:11, nc:0},
+  {uf:"PI",v1:250,  v2:25,   nb:0,   pct:10, nc:143},
+  {uf:"MS",v1:145,  v2:10,   nb:121, pct:7 , nc:0},
+  {uf:"PB",v1:60,   v2:2,    nb:4,   pct:3 , nc:0},
+  {uf:"MA",v1:350,  v2:7,    nb:1,   pct:2 , nc:246},
+  {uf:"MT",v1:225,  v2:3,    nb:21,  pct:1 , nc:0},
+  {uf:"RO",v1:100,  v2:1,    nb:0,   pct:1 , nc:0},
+  {uf:"RJ",v1:300,  v2:3,    nb:122, pct:1 , nc:189},
+  {uf:"BA",v1:770,  v2:1,    nb:157, pct:0 , nc:218},
+  {uf:"AC",v1:60,   v2:0,    nb:0,   pct:0 , nc:40},
+  {uf:"AP",v1:40,   v2:0,    nb:0,   pct:0 , nc:44},
+  {uf:"DF",v1:180,  v2:0,    nb:0,   pct:0 , nc:60},
+  {uf:"RS",v1:340,  v2:0,    nb:222, pct:0 , nc:0},
+  {uf:"CE",v1:1480, v2:0,    nb:565, pct:0 , nc:0},
+  {uf:"ES",v1:280,  v2:0,    nb:0,   pct:0 , nc:0},
+  {uf:"SP",v1:2000, v2:0,    nb:0,   pct:0 , nc:0},
+  {uf:"TO",v1:85,   v2:0,    nb:0,   pct:0 , nc:0},
 ];
-function instColor(p){
-  if(p===0) return {cls:"pct-red",   bar:"#D94633"};
-  if(p<20)  return {cls:"pct-orange",bar:"#FF9059"};
-  return           {cls:"pct-green", bar:"#005952"};
+function instColor(p, r){
+  if(r && r.v2===0) return {cls:"pct-red",   bar:"#D94633"};
+  if(p<20)          return {cls:"pct-orange",bar:"#FF9059"};
+  return                   {cls:"pct-green", bar:"#005952"};
 }
-renderRows("uf-inst-body", instData, "36px 1fr 1fr 44px", instColor, 100);
+renderRows("uf-inst-body", instData, "32px 1fr 1fr 40px 56px 38px", instColor, 100);
 
 // ── Profissionais 2025 vs 2026 ──
 const profData = [
-  {uf:"AL",v1:556,  v2:402,   na:275,  pct:72  },
-  {uf:"RN",v1:1710, v2:1295,  na:1201, pct:76  },
-  {uf:"BA",v1:3667, v2:2805,  na:2198, pct:76  },
-  {uf:"CE",v1:5456, v2:4503,  na:4450, pct:83  },
-  {uf:"PR",v1:2635, v2:2267,  na:2016, pct:86  },
-  {uf:"AC",v1:185,  v2:172,   na:123,  pct:93  },
-  {uf:"RS",v1:2306, v2:2408,  na:2305, pct:104 },
-  {uf:"SP",v1:10124,v2:11312, na:10391,pct:112 },
-  {uf:"PA",v1:1391, v2:1719,  na:893,  pct:124 },
-  {uf:"MA",v1:1545, v2:2164,  na:1028, pct:140 },
-  {uf:"AM",v1:732,  v2:1048,  na:608,  pct:143 },
-  {uf:"ES",v1:656,  v2:1101,  na:685,  pct:168 },
-  {uf:"RJ",v1:2336, v2:4997,  na:2045, pct:214 },
-  {uf:"SC",v1:1298, v2:3021,  na:1905, pct:233 },
-  {uf:"DF",v1:1112, v2:3687,  na:1144, pct:332 },
-  {uf:"GO",v1:3072, v2:10449, na:2409, pct:340 },
-  {uf:"RO",v1:739,  v2:3097,  na:1090, pct:419 },
-  {uf:"PI",v1:913,  v2:3919,  na:757,  pct:429 },
-  {uf:"PE",v1:1310, v2:6210,  na:762,  pct:474 },
-  {uf:"AP",v1:334,  v2:1680,  na:658,  pct:503 },
-  {uf:"TO",v1:233,  v2:1171,  na:213,  pct:503 },
-  {uf:"MT",v1:1104, v2:7620,  na:1296, pct:690 },
-  {uf:"MG",v1:3327, v2:27096, na:5843, pct:814 },
-  {uf:"MS",v1:678,  v2:5582,  na:3306, pct:823 },
-  {uf:"PB",v1:519,  v2:4794,  na:487,  pct:924 },
-  {uf:"RR",v1:225,  v2:2466,  na:216,  pct:1096},
-  {uf:"SE",v1:463,  v2:6249,  na:253,  pct:1350},
+  {uf:"RS",v1:13475, v2:3148,  pct:23 },
+  {uf:"RN",v1:4386,  v2:1865,  pct:43 },
+  {uf:"AM",v1:2637,  v2:1249,  pct:47 },
+  {uf:"PA",v1:4026,  v2:2031,  pct:50 },
+  {uf:"AL",v1:1130,  v2:679,   pct:60 },
+  {uf:"TO",v1:2830,  v2:1890,  pct:67 },
+  {uf:"AC",v1:688,   v2:463,   pct:67 },
+  {uf:"BA",v1:6248,  v2:4292,  pct:69 },
+  {uf:"GO",v1:17913, v2:12638, pct:71 },
+  {uf:"PR",v1:6164,  v2:4520,  pct:73 },
+  {uf:"PB",v1:6978,  v2:5126,  pct:73 },
+  {uf:"SP",v1:20379, v2:15403, pct:76 },
+  {uf:"PI",v1:5692,  v2:4464,  pct:78 },
+  {uf:"RO",v1:4852,  v2:3837,  pct:79 },
+  {uf:"CE",v1:9231,  v2:7881,  pct:85 },
+  {uf:"RR",v1:2607,  v2:2773,  pct:106},
+  {uf:"MT",v1:8235,  v2:9566,  pct:116},
+  {uf:"RJ",v1:5814,  v2:7156,  pct:123},
+  {uf:"ES",v1:1388,  v2:1859,  pct:134},
+  {uf:"PE",v1:5754,  v2:8506,  pct:148},
+  {uf:"SC",v1:2944,  v2:4411,  pct:150},
+  {uf:"MA",v1:3178,  v2:5596,  pct:176},
+  {uf:"DF",v1:4048,  v2:7293,  pct:180},
+  {uf:"AP",v1:948,   v2:1728,  pct:182},
+  {uf:"MS",v1:2686,  v2:7082,  pct:264},
+  {uf:"MG",v1:15901, v2:42117, pct:265},
+  {uf:"SE",v1:2706,  v2:8761,  pct:324},
 ];
 function profColor(p){
   if(p<80)  return {cls:"pct-red",   bar:"#D94633"};
   if(p<100) return {cls:"pct-orange",bar:"#FF9059"};
   return           {cls:"pct-green", bar:"#005952"};
 }
-renderRows("uf-prof-body", profData, "36px 1fr 1fr 60px 44px", profColor, 200);
+renderRows("uf-prof-body", profData, "40px 1fr 1fr 56px", profColor, 200);
 </script>
 </body>
 </html>
