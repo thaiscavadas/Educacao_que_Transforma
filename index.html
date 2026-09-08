@@ -157,7 +157,7 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
   <!-- Comparativo por UF: Estudantes 2025 vs 2026 -->
   <div class="comp-table">
     <div class="comp-head" style="grid-template-columns:32px 1fr 1fr 40px 60px;">
-      <span>UF</span><span>Meta repactuada</span><span>Executado</span><span>%</span><span>Em andamento</span>
+      <span>UF</span><span>Meta<br><span style="font-size:8px;">repact./inic.</span></span><span>Executado</span><span>%</span><span>Em andamento</span>
     </div>
     <div class="comp-scroll"><div id="uf-est-body"></div></div>
     <div class="legend">
@@ -211,7 +211,7 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
   <!-- Comparativo por UF: Instituições executado vs meta -->
   <div class="comp-table">
     <div class="comp-head" style="grid-template-columns:32px 1fr 1fr 40px 56px 38px;">
-      <span>UF</span><span>Meta repactuada</span><span>Executado</span><span>%</span><span>Em andamento</span><span>ALI</span>
+      <span>UF</span><span>Meta<br><span style="font-size:8px;">repact./inic.</span></span><span>Executado</span><span>%</span><span>Em andamento</span><span>ALI</span>
     </div>
     <div class="comp-scroll"><div id="uf-inst-body"></div></div>
     <div class="legend">
@@ -306,11 +306,14 @@ function renderRows(containerId, data, cols, colorFn, capBar) {
     const ncCell = r.nc !== undefined
       ? `<span class="comp-num" style="text-align:right;color:var(--verde);font-weight:600;">${r.nc ? fmt(r.nc) : "—"}</span>`
       : "";
+    const metaCell = (r.v0 !== undefined && r.v0 !== r.v1)
+      ? `<span class="comp-num" style="text-align:right;">${fmt(r.v1)}<br><span style="font-size:9px;color:var(--text-3);font-weight:400;">inic. ${fmt(r.v0)}</span></span>`
+      : `<span class="comp-num">${fmt(r.v1)}</span>`;
     const w = document.createElement("div");
     w.innerHTML = `
       <div class="comp-row" style="grid-template-columns:${cols};">
         <span class="comp-uf">${r.uf}</span>
-        <span class="comp-num">${fmt(r.v1)}</span>
+        ${metaCell}
         <span class="comp-num2">${fmt(r.v2)}</span>
         ${naCell}
         <span class="comp-pct ${c.cls}">${r.pct}%</span>
@@ -328,33 +331,33 @@ function renderRows(containerId, data, cols, colorFn, capBar) {
 
 // ── Estudantes 2025 vs 2026 ──
 const estData = [
-  {uf:"RR",v1:29588, v2:30048, nb:1225, pct:102},
-  {uf:"MT",v1:110000, v2:108202, nb:1329, pct:98},
-  {uf:"GO",v1:220000, v2:206492, nb:19957, pct:94},
-  {uf:"AM",v1:40000, v2:34913, nb:71, pct:87},
-  {uf:"MG",v1:752400, v2:634677, nb:58740, pct:84},
-  {uf:"AP",v1:25000, v2:20346, nb:18, pct:81},
-  {uf:"PI",v1:70000, v2:56724, nb:3510, pct:81},
-  {uf:"PB",v1:180000, v2:137967, nb:3261, pct:77},
-  {uf:"PA",v1:30900, v2:22826, nb:1647, pct:74},
-  {uf:"SC",v1:136100, v2:99048, nb:253, pct:73},
-  {uf:"PR",v1:725000, v2:510839, nb:3391, pct:70},
-  {uf:"SE",v1:92700, v2:52573, nb:176, pct:57},
-  {uf:"PE",v1:309000, v2:168721, nb:5849, pct:55},
-  {uf:"AL",v1:37000, v2:17840, nb:5, pct:48},
-  {uf:"RN",v1:150000, v2:70481, nb:1854, pct:47},
-  {uf:"ES",v1:74125, v2:33952, nb:12490, pct:46},
-  {uf:"RJ",v1:430000, v2:186390, nb:2127, pct:43},
-  {uf:"RO",v1:75100, v2:31994, nb:23177, pct:43},
-  {uf:"TO",v1:80000, v2:33467, nb:134, pct:42},
-  {uf:"BA",v1:346135, v2:138431, nb:64032, pct:40},
-  {uf:"MA",v1:151900, v2:46185, nb:3915, pct:30},
-  {uf:"MS",v1:84000, v2:23508, nb:60738, pct:28},
-  {uf:"DF",v1:620000, v2:133101, nb:824, pct:21},
-  {uf:"RS",v1:353000, v2:74661, nb:52416, pct:21},
-  {uf:"SP",v1:2900000, v2:340616, nb:1279, pct:12},
-  {uf:"AC",v1:26376, v2:2004, nb:40, pct:8},
-  {uf:"CE",v1:443300, v2:7937, nb:211728, pct:2},
+  {uf:"RR", v0:29588, v1:29588, v2:30048, nb:1225, pct:102},
+  {uf:"MT", v0:93500, v1:110000, v2:108202, nb:1329, pct:98},
+  {uf:"GO", v0:180000, v1:220000, v2:206492, nb:19957, pct:94},
+  {uf:"AM", v0:33000, v1:40000, v2:34913, nb:71, pct:87},
+  {uf:"MG", v0:752400, v1:752400, v2:634677, nb:58740, pct:84},
+  {uf:"AP", v0:22000, v1:25000, v2:20346, nb:18, pct:81},
+  {uf:"PI", v0:70000, v1:70000, v2:56724, nb:3510, pct:81},
+  {uf:"PB", v0:95900, v1:180000, v2:137967, nb:3261, pct:77},
+  {uf:"PA", v0:30900, v1:30900, v2:22826, nb:1647, pct:74},
+  {uf:"SC", v0:136100, v1:136100, v2:99048, nb:253, pct:73},
+  {uf:"PR", v0:720000, v1:725000, v2:510839, nb:3391, pct:70},
+  {uf:"SE", v0:78900, v1:92700, v2:52573, nb:176, pct:57},
+  {uf:"PE", v0:309000, v1:309000, v2:168721, nb:5849, pct:55},
+  {uf:"AL", v0:37000, v1:37000, v2:17840, nb:5, pct:48},
+  {uf:"RN", v0:89000, v1:150000, v2:70481, nb:1854, pct:47},
+  {uf:"ES", v0:74125, v1:74125, v2:33952, nb:12490, pct:46},
+  {uf:"RJ", v0:285340, v1:430000, v2:186390, nb:2127, pct:43},
+  {uf:"RO", v0:75100, v1:75100, v2:31994, nb:23177, pct:43},
+  {uf:"TO", v0:80000, v1:80000, v2:33467, nb:134, pct:42},
+  {uf:"BA", v0:184000, v1:346135, v2:138431, nb:64032, pct:40},
+  {uf:"MA", v0:151900, v1:151900, v2:46185, nb:3915, pct:30},
+  {uf:"MS", v0:70000, v1:84000, v2:23508, nb:60738, pct:28},
+  {uf:"DF", v0:620000, v1:620000, v2:133101, nb:824, pct:21},
+  {uf:"RS", v0:320600, v1:353000, v2:74661, nb:52416, pct:21},
+  {uf:"SP", v0:1100000, v1:2900000, v2:340616, nb:1279, pct:12},
+  {uf:"AC", v0:30200, v1:26376, v2:2004, nb:40, pct:8},
+  {uf:"CE", v0:443300, v1:443300, v2:7937, nb:211728, pct:2},
 ];
 function estColor(p){
   if(p<30) return {cls:"pct-red",   bar:"#D94633"};
@@ -365,33 +368,33 @@ renderRows("uf-est-body", estData, "32px 1fr 1fr 40px 60px", estColor, 100);
 
 // ── Instituições meta vs executado ──
 const instData = [
-  {uf:"PA",v1:80, v2:83, nb:6, nc:0, pct:104},
-  {uf:"AM",v1:95, v2:95, nb:1, nc:0, pct:100},
-  {uf:"GO",v1:570, v2:559, nb:59, nc:0, pct:98},
-  {uf:"PR",v1:3680, v2:2774, nb:5, nc:0, pct:75},
-  {uf:"MG",v1:2670, v2:1754, nb:381, nc:471, pct:66},
-  {uf:"SE",v1:165, v2:102, nb:87, nc:113, pct:62},
-  {uf:"RR",v1:120, v2:72, nb:0, nc:0, pct:60},
-  {uf:"SC",v1:285, v2:167, nb:4, nc:0, pct:59},
-  {uf:"BA",v1:770, v2:321, nb:457, nc:218, pct:42},
-  {uf:"PE",v1:255, v2:93, nb:193, nc:238, pct:36},
-  {uf:"MA",v1:350, v2:94, nb:265, nc:246, pct:27},
-  {uf:"RS",v1:340, v2:84, nb:160, nc:0, pct:25},
-  {uf:"RN",v1:440, v2:97, nb:33, nc:0, pct:22},
-  {uf:"PI",v1:250, v2:43, nb:156, nc:143, pct:17},
-  {uf:"AL",v1:100, v2:17, nb:13, nc:9, pct:17},
-  {uf:"AP",v1:40, v2:6, nb:45, nc:44, pct:15},
-  {uf:"PB",v1:60, v2:8, nb:8, nc:0, pct:13},
-  {uf:"RJ",v1:300, v2:36, nb:287, nc:189, pct:12},
-  {uf:"TO",v1:85, v2:9, nb:28, nc:0, pct:11},
-  {uf:"MT",v1:225, v2:20, nb:76, nc:0, pct:9},
-  {uf:"MS",v1:145, v2:12, nb:139, nc:0, pct:8},
-  {uf:"DF",v1:180, v2:5, nb:57, nc:60, pct:3},
-  {uf:"RO",v1:100, v2:1, nb:113, nc:0, pct:1},
-  {uf:"SP",v1:2000, v2:14, nb:0, nc:0, pct:1},
-  {uf:"ES",v1:280, v2:1, nb:43, nc:0, pct:0},
-  {uf:"AC",v1:60, v2:0, nb:40, nc:40, pct:0},
-  {uf:"CE",v1:1480, v2:0, nb:1229, nc:0, pct:0},
+  {uf:"PA", v0:80, v1:80, v2:83, nb:6, nc:0, pct:104},
+  {uf:"AM", v0:95, v1:95, v2:95, nb:1, nc:0, pct:100},
+  {uf:"GO", v0:200, v1:570, v2:559, nb:59, nc:0, pct:98},
+  {uf:"PR", v0:2200, v1:3680, v2:2774, nb:5, nc:0, pct:75},
+  {uf:"MG", v0:2670, v1:2670, v2:1754, nb:381, nc:471, pct:66},
+  {uf:"SE", v0:165, v1:165, v2:102, nb:87, nc:113, pct:62},
+  {uf:"RR", v0:120, v1:120, v2:72, nb:0, nc:0, pct:60},
+  {uf:"SC", v0:285, v1:285, v2:167, nb:4, nc:0, pct:59},
+  {uf:"BA", v0:770, v1:770, v2:321, nb:457, nc:218, pct:42},
+  {uf:"PE", v0:255, v1:255, v2:93, nb:193, nc:238, pct:36},
+  {uf:"MA", v0:350, v1:350, v2:94, nb:265, nc:246, pct:27},
+  {uf:"RS", v0:180, v1:340, v2:84, nb:160, nc:0, pct:25},
+  {uf:"RN", v0:220, v1:440, v2:97, nb:33, nc:0, pct:22},
+  {uf:"PI", v0:250, v1:250, v2:43, nb:156, nc:143, pct:17},
+  {uf:"AL", v0:100, v1:100, v2:17, nb:13, nc:9, pct:17},
+  {uf:"AP", v0:65, v1:40, v2:6, nb:45, nc:44, pct:15},
+  {uf:"PB", v0:60, v1:60, v2:8, nb:8, nc:0, pct:13},
+  {uf:"RJ", v0:300, v1:300, v2:36, nb:287, nc:189, pct:12},
+  {uf:"TO", v0:85, v1:85, v2:9, nb:28, nc:0, pct:11},
+  {uf:"MT", v0:225, v1:225, v2:20, nb:76, nc:0, pct:9},
+  {uf:"MS", v0:145, v1:145, v2:12, nb:139, nc:0, pct:8},
+  {uf:"DF", v0:450, v1:180, v2:5, nb:57, nc:60, pct:3},
+  {uf:"RO", v0:220, v1:100, v2:1, nb:113, nc:0, pct:1},
+  {uf:"SP", v0:2000, v1:2000, v2:14, nb:0, nc:0, pct:1},
+  {uf:"ES", v0:280, v1:280, v2:1, nb:43, nc:0, pct:0},
+  {uf:"AC", v0:90, v1:60, v2:0, nb:40, nc:40, pct:0},
+  {uf:"CE", v0:1480, v1:1480, v2:0, nb:1229, nc:0, pct:0},
 ];
 function instColor(p, r){
   if(r && r.v2===0) return {cls:"pct-red",   bar:"#D94633"};
