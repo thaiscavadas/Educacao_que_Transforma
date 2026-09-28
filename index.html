@@ -72,6 +72,9 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
 .comp-num{font-size:11px;text-align:right;color:var(--text-2);}
 .comp-num2{font-size:11px;text-align:right;font-weight:600;color:var(--text);}
 .comp-pct{font-size:12px;font-weight:700;text-align:right;font-family:"Funnel Display",sans-serif;}
+.seg-toggle{display:inline-flex;gap:0;border:1px solid var(--border);border-radius:999px;padding:2px;margin-bottom:10px;background:var(--bg);}
+.seg-toggle button{border:none;background:transparent;font-family:"Funnel Display",sans-serif;font-size:11px;font-weight:700;color:var(--text-3);padding:5px 12px;border-radius:999px;cursor:pointer;transition:all .15s;}
+.seg-toggle button.seg-on{background:var(--azul);color:#fff;}
 .pct-red{color:var(--vermelho);} .pct-orange{color:#B84010;} .pct-green{color:var(--verde);}
 .comp-bar-row{padding:0 14px 8px;border-bottom:1px solid var(--border);margin-top:-4px;}
 .comp-bar-bg{height:4px;background:var(--bg);border-radius:2px;overflow:hidden;}
@@ -210,6 +213,10 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
 
   <!-- Comparativo por UF: Instituições executado vs meta -->
   <div class="comp-table">
+    <div class="seg-toggle">
+      <button id="inst-btn-exec" onclick="setInstMode('exec')">% executado</button>
+      <button id="inst-btn-prev" onclick="setInstMode('prev')">% previsto</button>
+    </div>
     <div class="comp-head" style="grid-template-columns:32px 1fr 1fr 60px 46px;">
       <span>UF</span><span>Meta<br><span style="font-size:8px;">repact./inic.</span></span><span>Executado</span><span>Em andamento</span><span>%<br><span style="font-size:8px;">exec / +and.</span></span>
     </div>
@@ -293,11 +300,14 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
 <script>
 function fmt(n){return n.toLocaleString("pt-BR");}
 
-function renderRows(containerId, data, cols, colorFn, capBar) {
+function renderRows(containerId, data, cols, colorFn, capBar, barField) {
   const body = document.getElementById(containerId);
+  body.innerHTML = "";
+  const bf = barField || "pct";
   data.forEach(r => {
-    const c = colorFn(r.pct, r);
-    const barW = Math.min(capBar ? r.pct/capBar*100 : r.pct, 100);
+    const bv = r[bf];
+    const c = colorFn(bv, r, bf);
+    const barW = Math.min(capBar ? bv/capBar*100 : bv, 100);
     const hasNa = r.na !== undefined;
     const naPct = hasNa ? Math.round(r.na / r.v2 * 100) : null;
     const naCell = hasNa
@@ -314,7 +324,10 @@ function renderRows(containerId, data, cols, colorFn, capBar) {
       : (r.v0 !== undefined && r.v0 !== r.v1)
       ? `<span class="comp-num" style="text-align:right;">${fmt(r.v1)}<br><span style="font-size:9px;color:var(--text-3);font-weight:400;">inic. ${fmt(r.v0)}</span></span>`
       : `<span class="comp-num">${fmt(r.v1)}</span>`;
-    const pctCell = `<span class="comp-pct ${c.cls}" style="line-height:1.15;">${r.pct}%${r.base0 ? `<span style="color:var(--azul);">*</span>` : ""}${r.pct2!==undefined ? `<br><span style="font-size:9px;font-weight:600;color:var(--azul);">${r.pct2}%</span>` : ""}</span>`;
+    const execActive = (r.pct2===undefined) || (bf==="pct");
+    const execStyle = execActive ? "" : "opacity:.45;font-weight:600;";
+    const prevStyle = (bf==="pct2") ? "font-size:12px;font-weight:800;text-decoration:underline;" : "font-size:9px;font-weight:600;";
+    const pctCell = `<span class="comp-pct ${c.cls}" style="line-height:1.15;"><span style="${execStyle}">${r.pct}%${r.base0 ? `<span style="color:var(--azul);">*</span>` : ""}</span>${r.pct2!==undefined ? `<br><span style="color:var(--azul);${prevStyle}">${r.pct2}%</span>` : ""}</span>`;
     const pctLast = containerId === "uf-inst-body";
     const w = document.createElement("div");
     w.innerHTML = `
@@ -404,12 +417,18 @@ const instData = [
   {uf:"AC", v0:90, v1:60, v2:0, nb:48, pct:0, pct2:53, base0:true},
   {uf:"CE", v0:1480, v1:1480, v2:0, nb:1369, pct:0, pct2:92},
 ];
-function instColor(p, r){
-  if(r && r.v2===0) return {cls:"pct-red",   bar:"#D94633"};
-  if(p<20)          return {cls:"pct-orange",bar:"#FF9059"};
-  return                   {cls:"pct-green", bar:"#005952"};
+function instColor(p, r, bf){
+  const zero = bf==="pct2" ? (r.v2 + r.nb)===0 : r.v2===0;
+  if(zero) return {cls:"pct-red",   bar:"#D94633"};
+  if(p<20) return {cls:"pct-orange",bar:"#FF9059"};
+  return          {cls:"pct-green", bar:"#005952"};
 }
-renderRows("uf-inst-body", instData, "32px 1fr 1fr 60px 46px", instColor, 100);
+function setInstMode(m){
+  document.getElementById("inst-btn-exec").classList.toggle("seg-on", m==="exec");
+  document.getElementById("inst-btn-prev").classList.toggle("seg-on", m==="prev");
+  renderRows("uf-inst-body", instData, "32px 1fr 1fr 60px 46px", instColor, 100, m==="prev" ? "pct2" : "pct");
+}
+setInstMode("exec");
 
 // ── Profissionais 2025 vs 2026 ──
 const profData = [
