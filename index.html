@@ -159,10 +159,17 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
 
   <!-- Comparativo por UF: Estudantes 2025 vs 2026 -->
   <div class="comp-table">
-    <div class="comp-head" style="grid-template-columns:32px 1fr 1fr 40px 60px;">
-      <span>UF</span><span>Meta<br><span style="font-size:8px;">repact./inic.</span></span><span>Executado</span><span>%</span><span>Em andamento</span>
+    <div class="seg-toggle">
+      <button id="est-btn-exec" onclick="setEstMode('exec')">% executado</button>
+      <button id="est-btn-prev" onclick="setEstMode('prev')">% previsto</button>
+    </div>
+    <div class="comp-head" style="grid-template-columns:32px 1fr 1fr 60px 46px;">
+      <span>UF</span><span>Meta<br><span style="font-size:8px;">repact./inic.</span></span><span>Executado</span><span>Em andamento</span><span>%<br><span style="font-size:8px;">exec / +and.</span></span>
     </div>
     <div class="comp-scroll"><div id="uf-est-body"></div></div>
+    <div style="font-size:9px;color:var(--text-3);padding:6px 2px 0;line-height:1.4;">
+      <span style="color:var(--azul);font-weight:700;">*</span> Meta reduzida na repactuação — % calculado sobre a <b>meta inicial</b> (AC). Demais UFs usam a meta repactuada.
+    </div>
     <div class="legend">
       <div class="legend-item"><div class="legend-dot" style="background:var(--vermelho)"></div>Crítico (&lt;30%)</div>
       <div class="legend-item"><div class="legend-dot" style="background:var(--laranja)"></div>Atenção (30–57%)</div>
@@ -304,7 +311,8 @@ function renderRows(containerId, data, cols, colorFn, capBar, barField) {
   const body = document.getElementById(containerId);
   body.innerHTML = "";
   const bf = barField || "pct";
-  data.forEach(r => {
+  const sorted = [...data].sort((a,b) => b[bf] - a[bf]);
+  sorted.forEach(r => {
     const bv = r[bf];
     const c = colorFn(bv, r, bf);
     const barW = Math.min(capBar ? bv/capBar*100 : bv, 100);
@@ -328,7 +336,7 @@ function renderRows(containerId, data, cols, colorFn, capBar, barField) {
     const execStyle = execActive ? "" : "opacity:.45;font-weight:600;";
     const prevStyle = (bf==="pct2") ? "font-size:12px;font-weight:800;text-decoration:underline;" : "font-size:9px;font-weight:600;";
     const pctCell = `<span class="comp-pct ${c.cls}" style="line-height:1.15;"><span style="${execStyle}">${r.pct}%${r.base0 ? `<span style="color:var(--azul);">*</span>` : ""}</span>${r.pct2!==undefined ? `<br><span style="color:var(--azul);${prevStyle}">${r.pct2}%</span>` : ""}</span>`;
-    const pctLast = containerId === "uf-inst-body";
+    const pctLast = containerId === "uf-inst-body" || containerId === "uf-est-body";
     const w = document.createElement("div");
     w.innerHTML = `
       <div class="comp-row" style="grid-template-columns:${cols};">
@@ -352,40 +360,45 @@ function renderRows(containerId, data, cols, colorFn, capBar, barField) {
 
 // ── Estudantes 2025 vs 2026 ──
 const estData = [
-  {uf:"PB", v0:95900, v1:180000, v2:263466, nb:1835, pct:146},
-  {uf:"MG", v0:752400, v1:752400, v2:778741, nb:46938, pct:104},
-  {uf:"RR", v0:29588, v1:29588, v2:30091, nb:1225, pct:102},
-  {uf:"MT", v0:93500, v1:110000, v2:111742, nb:4296, pct:102},
-  {uf:"GO", v0:180000, v1:220000, v2:222755, nb:16202, pct:101},
-  {uf:"PA", v0:30900, v1:30900, v2:31011, nb:1667, pct:100},
-  {uf:"AM", v0:33000, v1:40000, v2:36507, nb:0, pct:91},
-  {uf:"PI", v0:70000, v1:70000, v2:63798, nb:6985, pct:91},
-  {uf:"SP", v0:1100000, v1:2900000, v2:2623326, nb:1678, pct:90},
-  {uf:"AP", v0:22000, v1:25000, v2:22023, nb:26, pct:88},
-  {uf:"DF", v0:620000, v1:620000, v2:524094, nb:40034, pct:85},
-  {uf:"SC", v0:136100, v1:136100, v2:113926, nb:2688, pct:84},
-  {uf:"SE", v0:78900, v1:92700, v2:71160, nb:116, pct:77},
-  {uf:"PR", v0:720000, v1:725000, v2:526770, nb:5626, pct:73},
-  {uf:"PE", v0:309000, v1:309000, v2:178022, nb:6289, pct:58},
-  {uf:"RN", v0:89000, v1:150000, v2:85771, nb:4094, pct:57},
-  {uf:"RO", v0:75100, v1:75100, v2:41010, nb:54250, pct:55},
-  {uf:"TO", v0:80000, v1:80000, v2:39901, nb:440, pct:50},
-  {uf:"AL", v0:37000, v1:37000, v2:18155, nb:40, pct:49},
-  {uf:"ES", v0:74125, v1:74125, v2:35236, nb:13232, pct:48},
-  {uf:"MA", v0:151900, v1:151900, v2:72179, nb:4184, pct:48},
-  {uf:"RJ", v0:285340, v1:430000, v2:193942, nb:2757, pct:45},
-  {uf:"RS", v0:320600, v1:353000, v2:156777, nb:57337, pct:44},
-  {uf:"BA", v0:184000, v1:346135, v2:147283, nb:106509, pct:43},
-  {uf:"AC", v0:30200, v1:26376, v2:10401, nb:2503, pct:39},
-  {uf:"MS", v0:70000, v1:84000, v2:30829, nb:65928, pct:37},
-  {uf:"CE", v0:443300, v1:443300, v2:8289, nb:237155, pct:2},
+  {uf:"PB", v0:95900, v1:180000, v2:263466, nb:1835, pct:146, pct2:147},
+  {uf:"MG", v0:752400, v1:752400, v2:778741, nb:46938, pct:104, pct2:110},
+  {uf:"RR", v0:29588, v1:29588, v2:30091, nb:1225, pct:102, pct2:106},
+  {uf:"MT", v0:93500, v1:110000, v2:111742, nb:4296, pct:102, pct2:105},
+  {uf:"GO", v0:180000, v1:220000, v2:222755, nb:16202, pct:101, pct2:109},
+  {uf:"PA", v0:30900, v1:30900, v2:31011, nb:1667, pct:100, pct2:106},
+  {uf:"AM", v0:33000, v1:40000, v2:36507, nb:0, pct:91, pct2:91},
+  {uf:"PI", v0:70000, v1:70000, v2:63798, nb:6985, pct:91, pct2:101},
+  {uf:"SP", v0:1100000, v1:2900000, v2:2623326, nb:1678, pct:90, pct2:91},
+  {uf:"AP", v0:22000, v1:25000, v2:22023, nb:26, pct:88, pct2:88},
+  {uf:"DF", v0:620000, v1:620000, v2:524094, nb:40034, pct:85, pct2:91},
+  {uf:"SC", v0:136100, v1:136100, v2:113926, nb:2688, pct:84, pct2:86},
+  {uf:"SE", v0:78900, v1:92700, v2:71160, nb:116, pct:77, pct2:77},
+  {uf:"PR", v0:720000, v1:725000, v2:526770, nb:5626, pct:73, pct2:73},
+  {uf:"PE", v0:309000, v1:309000, v2:178022, nb:6289, pct:58, pct2:60},
+  {uf:"RN", v0:89000, v1:150000, v2:85771, nb:4094, pct:57, pct2:60},
+  {uf:"RO", v0:75100, v1:75100, v2:41010, nb:54250, pct:55, pct2:127},
+  {uf:"TO", v0:80000, v1:80000, v2:39901, nb:440, pct:50, pct2:50},
+  {uf:"AL", v0:37000, v1:37000, v2:18155, nb:40, pct:49, pct2:49},
+  {uf:"ES", v0:74125, v1:74125, v2:35236, nb:13232, pct:48, pct2:65},
+  {uf:"MA", v0:151900, v1:151900, v2:72179, nb:4184, pct:48, pct2:50},
+  {uf:"RJ", v0:285340, v1:430000, v2:193942, nb:2757, pct:45, pct2:46},
+  {uf:"RS", v0:320600, v1:353000, v2:156777, nb:57337, pct:44, pct2:61},
+  {uf:"BA", v0:184000, v1:346135, v2:147283, nb:106509, pct:43, pct2:73},
+  {uf:"MS", v0:70000, v1:84000, v2:30829, nb:65928, pct:37, pct2:115},
+  {uf:"AC", v0:30200, v1:26376, v2:10401, nb:2503, pct:34, pct2:43, base0:true},
+  {uf:"CE", v0:443300, v1:443300, v2:8289, nb:237155, pct:2, pct2:55},
 ];
 function estColor(p){
   if(p<30) return {cls:"pct-red",   bar:"#D94633"};
   if(p<58) return {cls:"pct-orange",bar:"#FF9059"};
   return          {cls:"pct-green", bar:"#005952"};
 }
-renderRows("uf-est-body", estData, "32px 1fr 1fr 40px 60px", estColor, 100);
+function setEstMode(m){
+  document.getElementById("est-btn-exec").classList.toggle("seg-on", m==="exec");
+  document.getElementById("est-btn-prev").classList.toggle("seg-on", m==="prev");
+  renderRows("uf-est-body", estData, "32px 1fr 1fr 60px 46px", estColor, 100, m==="prev" ? "pct2" : "pct");
+}
+setEstMode("exec");
 
 // ── Instituições meta vs executado ──
 const instData = [
