@@ -61,6 +61,18 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
 .recor-bar-bg{height:8px;background:var(--bg);border-radius:4px;overflow:hidden;}
 .recor-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--verde) 0%,var(--verde-agua) 100%);}
 .recor-gap{text-align:center;font-size:11px;color:#8B3310;font-weight:700;margin-top:6px;}
+.pend-group{margin-bottom:12px;}
+.pend-group:last-of-type{margin-bottom:4px;}
+.pend-head{display:flex;align-items:center;gap:7px;margin-bottom:8px;flex-wrap:wrap;}
+.pend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.pend-label{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+.pend-count{font-size:10px;color:var(--text-3);font-weight:600;}
+.pend-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.pend-chip{display:inline-flex;align-items:baseline;gap:4px;background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:4px 10px;}
+.pend-chip .u{font-size:12px;font-weight:800;color:var(--text);font-family:"Funnel Display",sans-serif;}
+.pend-chip .p{font-size:10px;font-weight:700;}
+.pend-none{font-size:11px;color:var(--verde);font-weight:600;}
+
 
 /* COMPARISON TABLE */
 .comp-table{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;margin-top:8px;}
@@ -96,7 +108,7 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
   <div class="header-inner">
     <div class="header-eyebrow">Sebrae · Educação Empreendedora</div>
     <div class="header-title">Execução Programa<br>Educação que Transforma</div>
-    <div class="header-date">Setembro 2026</div>
+    <div class="header-date">Novembro 2026</div>
     <div class="header-gestora">Gestora: Thais Neves Cavadas</div>
   </div>
 </div>
@@ -110,35 +122,28 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
     <span class="section-label" style="color:var(--azul)">Atendimento a Estudantes</span>
   </div>
 
-  <div class="card-grid-2" style="margin-bottom:8px;">
-    <div class="card-sm">
-      <div class="metric-label">Meta anual</div>
-      <div class="metric-value">6.111.853</div>
-    </div>
-    <div class="card-sm">
-      <div class="metric-label">Nova meta (repactuação)</div>
-      <div class="metric-value">8.491.624</div>
-      <div class="badge badge-blue">+38,9%</div>
-    </div>
+  <div class="card-sm" style="margin-bottom:8px;">
+    <div class="metric-label">Meta (repactuação)</div>
+    <div class="metric-value">8.491.624</div>
   </div>
 
   <div class="card" style="margin-bottom:8px;">
     <div class="metric-label">Atendimentos realizados</div>
-    <div class="metric-value" style="font-size:28px;">6.111.853</div>
-    <div class="badge badge-green">177% de set/25 (3.458.570)</div>
+    <div class="metric-value" style="font-size:28px;">8.695.383</div>
+    <div class="badge badge-green">104% de nov/25 (8.371.404)</div>
   </div>
 
   <div class="card" style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;margin-bottom:8px;">
     <span class="metric-label" style="margin:0;">Previsão (não consolidado no FOCO)</span>
-    <span style="font-family:'Funnel Display',sans-serif;font-size:18px;font-weight:700;color:var(--azul);">+684.034</span>
+    <span style="font-family:'Funnel Display',sans-serif;font-size:18px;font-weight:700;color:var(--azul);">+329.580</span>
   </div>
 
   <div class="prog-row">
     <div class="prog-card" style="border-top:3px solid var(--azul);">
       <div class="prog-name">Escalada</div>
-      <div class="prog-val">71.479</div><div class="prog-desc">atendimentos</div>
+      <div class="prog-val">119.190</div><div class="prog-desc">atendimentos</div>
       <hr class="prog-divider">
-      <div class="prog-val" style="font-size:14px;">3.909</div>
+      <div class="prog-val" style="font-size:14px;">8.062</div>
       <div class="prog-desc">estudantes atend.</div>
     </div>
     <div class="prog-card" style="border-top:3px solid var(--laranja);">
@@ -150,9 +155,9 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
     </div>
     <div class="prog-card" style="border-top:3px solid var(--verde);">
       <div class="prog-name">Supernova</div>
-      <div class="prog-val">40.873</div><div class="prog-desc">inscritos</div>
+      <div class="prog-val">52.334</div><div class="prog-desc">inscritos</div>
       <hr class="prog-divider">
-      <div class="prog-val" style="font-size:14px;">5.627</div>
+      <div class="prog-val" style="font-size:14px;">6.564</div>
       <div class="prog-desc">equipes válidas</div>
     </div>
   </div>
@@ -164,12 +169,9 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
       <button id="est-btn-prev" onclick="setEstMode('prev')">% previsto</button>
     </div>
     <div class="comp-head" style="grid-template-columns:32px 1fr 1fr 60px 46px;">
-      <span>UF</span><span>Meta<br><span style="font-size:8px;">repact./inic.</span></span><span>Executado</span><span>Em andamento</span><span>%<br><span style="font-size:8px;">exec / +and.</span></span>
+      <span>UF</span><span>Meta<br><span style="font-size:8px;">repactuada</span></span><span>Executado</span><span>Em andamento</span><span>%<br><span style="font-size:8px;">exec / +and.</span></span>
     </div>
     <div class="comp-scroll"><div id="uf-est-body"></div></div>
-    <div style="font-size:9px;color:var(--text-3);padding:6px 2px 0;line-height:1.4;">
-      <span style="color:var(--azul);font-weight:700;">*</span> Meta reduzida na repactuação — % calculado sobre a <b>meta inicial</b> (AC). Demais UFs usam a meta repactuada.
-    </div>
     <div class="legend">
       <div class="legend-item"><div class="legend-dot" style="background:var(--vermelho)"></div>Crítico (&lt;30%)</div>
       <div class="legend-item"><div class="legend-dot" style="background:var(--laranja)"></div>Atenção (30–57%)</div>
@@ -188,34 +190,26 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
     <span class="section-label" style="color:var(--verde)">Instituições de Ensino Impactadas</span>
   </div>
 
-  <div class="card-grid-2" style="margin-bottom:8px;">
-    <div class="card-sm">
-      <div class="metric-label">Meta anual</div>
-      <div class="metric-value">13.340</div>
-    </div>
-    <div class="card-sm">
-      <div class="metric-label">Nova meta (repactuação)</div>
-      <div class="metric-value">15.125</div>
-      <div class="badge badge-blue">+13,4%</div>
-    </div>
+  <div class="card-sm" style="margin-bottom:8px;">
+    <div class="metric-label">Meta (repactuação)</div>
+    <div class="metric-value">15.405</div>
   </div>
   <div class="card-grid-2" style="margin-bottom:8px;">
     <div class="card-sm">
       <div class="metric-label">Impactadas</div>
-      <div class="metric-value">7.124</div>
-      <div class="badge badge-orange">53,4% da meta</div>
-      <div class="metric-sub sub-muted">47,1% da nova meta</div>
+      <div class="metric-value">11.861</div>
+      <div class="badge badge-orange">77,0% da meta</div>
     </div>
     <div class="card-sm">
       <div class="metric-label">ALI (escolas)</div>
-      <div class="metric-value">1.763</div>
+      <div class="metric-value">1.758</div>
       <div class="metric-sub sub-muted">escolas públicas</div>
     </div>
   </div>
 
   <div class="card" style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;margin-bottom:8px;">
     <span class="metric-label" style="margin:0;">Previsão (não consolidado no FOCO)</span>
-    <span style="font-family:'Funnel Display',sans-serif;font-size:18px;font-weight:700;color:var(--azul);">+4.271</span>
+    <span style="font-family:'Funnel Display',sans-serif;font-size:18px;font-weight:700;color:var(--azul);">+1.740</span>
   </div>
 
   <!-- Comparativo por UF: Instituições executado vs meta -->
@@ -225,12 +219,9 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
       <button id="inst-btn-prev" onclick="setInstMode('prev')">% previsto</button>
     </div>
     <div class="comp-head" style="grid-template-columns:32px 1fr 1fr 60px 46px;">
-      <span>UF</span><span>Meta<br><span style="font-size:8px;">repact./inic.</span></span><span>Executado</span><span>Em andamento</span><span>%<br><span style="font-size:8px;">exec / +and.</span></span>
+      <span>UF</span><span>Meta<br><span style="font-size:8px;">repactuada</span></span><span>Executado</span><span>Em andamento</span><span>%<br><span style="font-size:8px;">exec / +and.</span></span>
     </div>
     <div class="comp-scroll"><div id="uf-inst-body"></div></div>
-    <div style="font-size:9px;color:var(--text-3);padding:6px 2px 0;line-height:1.4;">
-      <span style="color:var(--azul);font-weight:700;">*</span> Meta reduzida na repactuação — % calculado sobre a <b>meta inicial</b> (AP, DF, RO, AC). Demais UFs usam a meta repactuada.
-    </div>
     <div class="legend">
       <div class="legend-item"><div class="legend-dot" style="background:var(--vermelho)"></div>Sem execução</div>
       <div class="legend-item"><div class="legend-dot" style="background:var(--laranja)"></div>Abaixo de 20%</div>
@@ -253,12 +244,12 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
   <div class="card-grid-2" style="margin-bottom:8px;">
     <div class="card-sm">
       <div class="metric-label">Profissionais atendidos</div>
-      <div class="metric-value">144.889</div>
+      <div class="metric-value">171.971</div>
     </div>
     <div class="card-sm">
       <div class="metric-label">Qtd. de atendimentos</div>
-      <div class="metric-value">226.973</div>
-      <div class="badge badge-orange">80% de set/25 (285.173)</div>
+      <div class="metric-value">325.835</div>
+      <div class="badge badge-orange">79% de nov/25 (411.482)</div>
     </div>
   </div>
 
@@ -266,41 +257,70 @@ body{font-family:"Figtree",sans-serif;background:var(--bg);color:var(--text);min
     <div class="metric-label">Recorrência atual vs meta</div>
     <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;">
       <div>
-        <span style="font-family:'Funnel Display',sans-serif;font-size:26px;font-weight:800;color:var(--verde);">32,81%</span>
+        <span style="font-family:'Funnel Display',sans-serif;font-size:26px;font-weight:800;color:var(--verde);">35,4%</span>
         <span style="font-size:12px;color:var(--text-3);margin-left:4px;">atual</span>
       </div>
       <div style="text-align:right;">
-        <div style="font-size:13px;font-weight:600;color:var(--text-2);">nova meta: 34%</div>
-        <div style="font-size:10px;color:var(--text-3);">meta anterior: 29,84%</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text-2);">meta: 30%</div>
+        <div style="font-size:10px;color:var(--verde);font-weight:700;">▲ 5,4 p.p. acima</div>
       </div>
     </div>
-    <div class="recor-bar-bg"><div class="recor-bar-fill" style="width:96.5%"></div></div>
+    <div class="recor-bar-bg"><div class="recor-bar-fill" style="width:100%"></div></div>
   </div>
 
   <div class="card-grid-2" style="margin-bottom:8px;">
     <div class="card-sm">
       <div class="metric-label">Previsão (não consol.)</div>
-      <div class="metric-value" style="color:var(--azul);">+5.563</div>
+      <div class="metric-value" style="color:var(--azul);">+3.537</div>
       <div class="metric-sub sub-muted">atendimentos</div>
     </div>
     <div class="card-sm">
       <div class="metric-label">CER</div>
-      <div class="metric-value">24.135</div>
-      <div class="metric-sub sub-muted">65% de recorrência</div>
+      <div class="metric-value">27.782</div>
+      <div class="metric-sub sub-muted">66% de recorrência</div>
     </div>
   </div>
 
-  <!-- Comparativo por UF: Profissionais 2025 vs 2026 -->
+  <!-- Comparativo por UF: Recorrência atual vs meta -->
   <div class="comp-table">
     <div class="comp-head" style="grid-template-columns:40px 1fr 1fr 56px;">
-      <span>UF</span><span>2025</span><span>2026</span><span>%</span>
+      <span>UF</span><span>Meta</span><span>Recorr. atual</span><span>% ating.</span>
     </div>
     <div class="comp-scroll"><div id="uf-prof-body"></div></div>
     <div class="legend">
-      <div class="legend-item"><div class="legend-dot" style="background:var(--vermelho)"></div>Abaixo de 80%</div>
-      <div class="legend-item"><div class="legend-dot" style="background:var(--laranja)"></div>80–99%</div>
-      <div class="legend-item"><div class="legend-dot" style="background:var(--verde)"></div>100%+ (acima de 2025)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--vermelho)"></div>&lt;80% da meta</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--laranja)"></div>80–99% da meta</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--verde)"></div>Atingiu a meta (100%+)</div>
     </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     RESUMO: UFs ABAIXO DA META
+     ══════════════════════════════════ -->
+<hr class="section-divider">
+<div class="section" style="margin-bottom:8px;">
+  <div class="section-header">
+    <div class="section-bar" style="background:var(--text-2)"></div>
+    <span class="section-label" style="color:var(--text-2)">UFs que ainda não atingiram a meta</span>
+  </div>
+  <div class="seg-toggle" style="margin:0 0 10px;">
+    <button id="pend-btn-exec" onclick="renderPendentes('exec')">% executado</button>
+    <button id="pend-btn-prev" onclick="renderPendentes('prev')">% previsto</button>
+  </div>
+  <div class="card"><div id="pend-body"></div>
+    <div style="font-size:9px;color:var(--text-3);padding:8px 2px 0;line-height:1.4;border-top:1px solid var(--border);margin-top:4px;">
+      Base: % sobre a meta repactuada, no modo selecionado. Profissionais sempre pela recorrência atual ÷ meta. UFs ausentes de cada lista já atingiram 100%.
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:8px;border:1.5px solid var(--vermelho);">
+    <div class="pend-head" style="margin-bottom:8px;">
+      <span class="pend-dot" style="background:var(--vermelho);"></span>
+      <span class="pend-label" style="color:var(--vermelho);">Não atingiram nenhuma das 3 metas</span>
+      <span class="pend-count" id="pend-none-count"></span>
+    </div>
+    <div class="pend-chips" id="pend-none-body"></div>
   </div>
 </div>
 
@@ -327,11 +347,7 @@ function renderRows(containerId, data, cols, colorFn, capBar, barField) {
     const ncCell = r.nc !== undefined
       ? `<span class="comp-num" style="text-align:right;color:var(--verde);font-weight:600;">${r.nc ? fmt(r.nc) : "—"}</span>`
       : "";
-    const metaCell = r.base0
-      ? `<span class="comp-num" style="text-align:right;"><span style="color:var(--text-3);font-weight:400;text-decoration:line-through;">${fmt(r.v1)}</span><br><span style="font-size:10px;color:var(--azul);font-weight:700;">${fmt(r.v0)} *</span></span>`
-      : (r.v0 !== undefined && r.v0 !== r.v1)
-      ? `<span class="comp-num" style="text-align:right;">${fmt(r.v1)}<br><span style="font-size:9px;color:var(--text-3);font-weight:400;">inic. ${fmt(r.v0)}</span></span>`
-      : `<span class="comp-num">${fmt(r.v1)}</span>`;
+    const metaCell = `<span class="comp-num">${fmt(r.v1)}</span>`;
     const execActive = (r.pct2===undefined) || (bf==="pct");
     const execStyle = execActive ? "" : "opacity:.45;font-weight:600;";
     const prevStyle = (bf==="pct2") ? "font-size:12px;font-weight:800;text-decoration:underline;" : "font-size:9px;font-weight:600;";
@@ -360,33 +376,33 @@ function renderRows(containerId, data, cols, colorFn, capBar, barField) {
 
 // ── Estudantes 2025 vs 2026 ──
 const estData = [
-  {uf:"PB", v0:95900, v1:180000, v2:263466, nb:1835, pct:146, pct2:147},
-  {uf:"MG", v0:752400, v1:752400, v2:778741, nb:46938, pct:104, pct2:110},
-  {uf:"RR", v0:29588, v1:29588, v2:30091, nb:1225, pct:102, pct2:106},
-  {uf:"MT", v0:93500, v1:110000, v2:111742, nb:4296, pct:102, pct2:105},
-  {uf:"GO", v0:180000, v1:220000, v2:222755, nb:16202, pct:101, pct2:109},
-  {uf:"PA", v0:30900, v1:30900, v2:31011, nb:1667, pct:100, pct2:106},
-  {uf:"AM", v0:33000, v1:40000, v2:36507, nb:0, pct:91, pct2:91},
-  {uf:"PI", v0:70000, v1:70000, v2:63798, nb:6985, pct:91, pct2:101},
-  {uf:"SP", v0:1100000, v1:2900000, v2:2623326, nb:1678, pct:90, pct2:91},
-  {uf:"AP", v0:22000, v1:25000, v2:22023, nb:26, pct:88, pct2:88},
-  {uf:"DF", v0:620000, v1:620000, v2:524094, nb:40034, pct:85, pct2:91},
-  {uf:"SC", v0:136100, v1:136100, v2:113926, nb:2688, pct:84, pct2:86},
-  {uf:"SE", v0:78900, v1:92700, v2:71160, nb:116, pct:77, pct2:77},
-  {uf:"PR", v0:720000, v1:725000, v2:526770, nb:5626, pct:73, pct2:73},
-  {uf:"PE", v0:309000, v1:309000, v2:178022, nb:6289, pct:58, pct2:60},
-  {uf:"RN", v0:89000, v1:150000, v2:85771, nb:4094, pct:57, pct2:60},
-  {uf:"RO", v0:75100, v1:75100, v2:41010, nb:54250, pct:55, pct2:127},
-  {uf:"TO", v0:80000, v1:80000, v2:39901, nb:440, pct:50, pct2:50},
-  {uf:"AL", v0:37000, v1:37000, v2:18155, nb:40, pct:49, pct2:49},
-  {uf:"ES", v0:74125, v1:74125, v2:35236, nb:13232, pct:48, pct2:65},
-  {uf:"MA", v0:151900, v1:151900, v2:72179, nb:4184, pct:48, pct2:50},
-  {uf:"RJ", v0:285340, v1:430000, v2:193942, nb:2757, pct:45, pct2:46},
-  {uf:"RS", v0:320600, v1:353000, v2:156777, nb:57337, pct:44, pct2:61},
-  {uf:"BA", v0:184000, v1:346135, v2:147283, nb:106509, pct:43, pct2:73},
-  {uf:"MS", v0:70000, v1:84000, v2:30829, nb:65928, pct:37, pct2:115},
-  {uf:"AC", v0:30200, v1:26376, v2:10401, nb:2503, pct:34, pct2:43, base0:true},
-  {uf:"CE", v0:443300, v1:443300, v2:8289, nb:237155, pct:2, pct2:55},
+  {uf:"PI", v0:70000, v1:70000, v2:123510, nb:3139, pct:176, pct2:181},
+  {uf:"AP", v0:22000, v1:25000, v2:42426, nb:16, pct:170, pct2:170},
+  {uf:"PB", v0:95900, v1:180000, v2:284360, nb:2778, pct:158, pct2:160},
+  {uf:"PA", v0:30900, v1:30900, v2:48451, nb:1307, pct:157, pct2:161},
+  {uf:"AM", v0:33000, v1:40000, v2:50672, nb:53, pct:127, pct2:127},
+  {uf:"MG", v0:752400, v1:752400, v2:958335, nb:41722, pct:127, pct2:133},
+  {uf:"GO", v0:180000, v1:220000, v2:277796, nb:7626, pct:126, pct2:130},
+  {uf:"MT", v0:93500, v1:110000, v2:134727, nb:4501, pct:122, pct2:127},
+  {uf:"DF", v0:620000, v1:620000, v2:686817, nb:313, pct:111, pct2:111},
+  {uf:"MA", v0:151900, v1:151900, v2:168788, nb:670, pct:111, pct2:112},
+  {uf:"RN", v0:89000, v1:150000, v2:162992, nb:5086, pct:109, pct2:112},
+  {uf:"SE", v0:78900, v1:92700, v2:100827, nb:116, pct:109, pct2:109},
+  {uf:"PR", v0:720000, v1:725000, v2:786576, nb:3050, pct:108, pct2:109},
+  {uf:"AL", v0:37000, v1:37000, v2:39701, nb:829, pct:107, pct2:110},
+  {uf:"TO", v0:80000, v1:80000, v2:84689, nb:1487, pct:106, pct2:108},
+  {uf:"SP", v0:1100000, v1:2900000, v2:2977761, nb:1872, pct:103, pct2:103},
+  {uf:"SC", v0:136100, v1:136100, v2:135525, nb:131, pct:100, pct2:100},
+  {uf:"RR", v0:29588, v1:29588, v2:28965, nb:0, pct:98, pct2:98},
+  {uf:"PE", v0:309000, v1:309000, v2:294203, nb:1609, pct:95, pct2:96},
+  {uf:"MS", v0:70000, v1:84000, v2:73173, nb:33448, pct:87, pct2:127},
+  {uf:"RS", v0:320600, v1:353000, v2:304579, nb:16198, pct:86, pct2:91},
+  {uf:"AC", v0:30200, v1:26376, v2:22238, nb:826, pct:84, pct2:87},
+  {uf:"BA", v0:184000, v1:346135, v2:268803, nb:96876, pct:78, pct2:106},
+  {uf:"RO", v0:75100, v1:75100, v2:52369, nb:48890, pct:70, pct2:135},
+  {uf:"ES", v0:74125, v1:74125, v2:47439, nb:13033, pct:64, pct2:82},
+  {uf:"RJ", v0:285340, v1:430000, v2:267947, nb:2537, pct:62, pct2:63},
+  {uf:"CE", v0:443300, v1:443300, v2:271578, nb:41467, pct:61, pct2:71},
 ];
 function estColor(p){
   if(p<30) return {cls:"pct-red",   bar:"#D94633"};
@@ -402,33 +418,33 @@ setEstMode("exec");
 
 // ── Instituições meta vs executado ──
 const instData = [
+  {uf:"PA", v0:80, v1:80, v2:88, nb:1, pct:110, pct2:111},
+  {uf:"GO", v0:200, v1:570, v2:616, nb:15, pct:108, pct2:111},
   {uf:"AM", v0:95, v1:95, v2:103, nb:0, pct:108, pct2:108},
-  {uf:"PA", v0:80, v1:80, v2:86, nb:0, pct:108, pct2:108},
-  {uf:"SE", v0:165, v1:165, v2:168, nb:75, pct:102, pct2:147},
-  {uf:"GO", v0:200, v1:570, v2:579, nb:49, pct:102, pct2:110},
-  {uf:"MG", v0:2670, v1:2670, v2:2087, nb:301, pct:78, pct2:89},
-  {uf:"PR", v0:2200, v1:3680, v2:2839, nb:13, pct:77, pct2:78},
-  {uf:"SC", v0:285, v1:285, v2:217, nb:6, pct:76, pct2:78},
-  {uf:"RR", v0:120, v1:120, v2:72, nb:0, pct:60, pct2:60},
-  {uf:"BA", v0:770, v1:770, v2:322, nb:624, pct:42, pct2:123},
-  {uf:"PE", v0:255, v1:255, v2:99, nb:192, pct:39, pct2:114},
-  {uf:"RS", v0:180, v1:340, v2:116, nb:173, pct:34, pct2:85},
-  {uf:"MA", v0:350, v1:350, v2:111, nb:265, pct:32, pct2:107},
-  {uf:"PI", v0:250, v1:250, v2:62, nb:157, pct:25, pct2:88},
-  {uf:"RN", v0:220, v1:440, v2:101, nb:66, pct:23, pct2:38},
-  {uf:"AL", v0:100, v1:100, v2:19, nb:13, pct:19, pct2:32},
-  {uf:"PB", v0:60, v1:60, v2:8, nb:8, pct:13, pct2:27},
-  {uf:"RJ", v0:300, v1:300, v2:40, nb:286, pct:13, pct2:109},
-  {uf:"MT", v0:225, v1:225, v2:25, nb:87, pct:11, pct2:50},
-  {uf:"TO", v0:85, v1:85, v2:9, nb:32, pct:11, pct2:48},
-  {uf:"MS", v0:145, v1:145, v2:15, nb:136, pct:10, pct2:104},
-  {uf:"AP", v0:65, v1:40, v2:6, nb:45, pct:9, pct2:78, base0:true},
-  {uf:"DF", v0:450, v1:180, v2:7, nb:130, pct:2, pct2:30, base0:true},
-  {uf:"RO", v0:220, v1:100, v2:2, nb:150, pct:1, pct2:69, base0:true},
-  {uf:"SP", v0:2000, v1:2000, v2:28, nb:0, pct:1, pct2:1},
-  {uf:"ES", v0:280, v1:280, v2:2, nb:45, pct:1, pct2:17},
-  {uf:"AC", v0:90, v1:60, v2:0, nb:48, pct:0, pct2:53, base0:true},
-  {uf:"CE", v0:1480, v1:1480, v2:0, nb:1369, pct:0, pct2:92},
+  {uf:"MG", v0:2670, v1:2670, v2:2812, nb:184, pct:105, pct2:112},
+  {uf:"SE", v0:165, v1:165, v2:173, nb:72, pct:105, pct2:148},
+  {uf:"CE", v0:1480, v1:1480, v2:1514, nb:331, pct:102, pct2:125},
+  {uf:"RR", v0:120, v1:120, v2:123, nb:0, pct:102, pct2:102},
+  {uf:"SC", v0:285, v1:285, v2:280, nb:2, pct:98, pct2:99},
+  {uf:"PR", v0:2200, v1:3680, v2:3555, nb:0, pct:97, pct2:97},
+  {uf:"DF", v0:450, v1:360, v2:341, nb:16, pct:95, pct2:99},
+  {uf:"AL", v0:100, v1:100, v2:91, nb:13, pct:91, pct2:104},
+  {uf:"AP", v0:65, v1:52, v2:45, nb:39, pct:87, pct2:162},
+  {uf:"TO", v0:85, v1:85, v2:67, nb:17, pct:79, pct2:99},
+  {uf:"BA", v0:770, v1:770, v2:598, nb:517, pct:78, pct2:145},
+  {uf:"MS", v0:145, v1:145, v2:94, nb:57, pct:65, pct2:104},
+  {uf:"RS", v0:180, v1:340, v2:217, nb:127, pct:64, pct2:101},
+  {uf:"RN", v0:220, v1:440, v2:267, nb:4, pct:61, pct2:62},
+  {uf:"MA", v0:350, v1:350, v2:168, nb:236, pct:48, pct2:115},
+  {uf:"PE", v0:255, v1:255, v2:123, nb:180, pct:48, pct2:119},
+  {uf:"PB", v0:60, v1:60, v2:26, nb:10, pct:43, pct2:60},
+  {uf:"PI", v0:250, v1:250, v2:101, nb:129, pct:40, pct2:92},
+  {uf:"RJ", v0:300, v1:300, v2:66, nb:157, pct:22, pct2:74},
+  {uf:"MT", v0:225, v1:225, v2:42, nb:100, pct:19, pct2:63},
+  {uf:"SP", v0:2000, v1:2000, v2:306, nb:0, pct:15, pct2:15},
+  {uf:"RO", v0:220, v1:176, v2:23, nb:129, pct:13, pct2:86},
+  {uf:"AC", v0:90, v1:72, v2:8, nb:45, pct:11, pct2:74},
+  {uf:"ES", v0:280, v1:280, v2:11, nb:61, pct:4, pct2:26},
 ];
 function instColor(p, r, bf){
   const zero = bf==="pct2" ? (r.v2 + r.nb)===0 : r.v2===0;
@@ -445,40 +461,83 @@ setInstMode("exec");
 
 // ── Profissionais 2025 vs 2026 ──
 const profData = [
-  {uf:"RS", v1:16114, v2:4574, pct:28},
-  {uf:"RN", v1:5493, v2:2700, pct:49},
-  {uf:"AM", v1:3614, v2:1902, pct:53},
-  {uf:"GO", v1:25302, v2:13972, pct:55},
-  {uf:"AL", v1:1785, v2:994, pct:56},
-  {uf:"PR", v1:11074, v2:6195, pct:56},
-  {uf:"PA", v1:5102, v2:3200, pct:63},
-  {uf:"AC", v1:892, v2:614, pct:69},
-  {uf:"SP", v1:26495, v2:18360, pct:69},
-  {uf:"TO", v1:6009, v2:4529, pct:75},
-  {uf:"RO", v1:5690, v2:4329, pct:76},
-  {uf:"PB", v1:8444, v2:7201, pct:85},
-  {uf:"CE", v1:11285, v2:10054, pct:89},
-  {uf:"BA", v1:8279, v2:7488, pct:90},
-  {uf:"MT", v1:11885, v2:11142, pct:94},
-  {uf:"RR", v1:2745, v2:2939, pct:107},
-  {uf:"RJ", v1:8386, v2:9289, pct:111},
-  {uf:"PI", v1:7078, v2:7854, pct:111},
-  {uf:"DF", v1:8103, v2:9166, pct:113},
-  {uf:"ES", v1:2767, v2:3184, pct:115},
-  {uf:"AP", v1:1454, v2:1931, pct:133},
-  {uf:"MS", v1:5990, v2:8337, pct:139},
-  {uf:"PE", v1:8292, v2:12586, pct:152},
-  {uf:"MG", v1:43545, v2:74008, pct:170},
-  {uf:"SC", v1:4312, v2:8002, pct:186},
-  {uf:"SE", v1:5198, v2:12451, pct:240},
-  {uf:"MA", v1:3954, v2:9646, pct:244},
+  {uf:"SP", meta:10, atual:26.13, pct:261},
+  {uf:"DF", meta:24, atual:48.79, pct:203},
+  {uf:"GO", meta:20, atual:39.47, pct:197},
+  {uf:"MG", meta:27, atual:43.62, pct:162},
+  {uf:"RR", meta:33, atual:51.66, pct:157},
+  {uf:"BA", meta:27, atual:42.28, pct:157},
+  {uf:"MT", meta:25, atual:37.19, pct:149},
+  {uf:"AC", meta:20, atual:28.24, pct:141},
+  {uf:"TO", meta:32, atual:40.84, pct:128},
+  {uf:"RN", meta:35, atual:44.19, pct:126},
+  {uf:"PR", meta:22, atual:26.11, pct:119},
+  {uf:"SC", meta:35, atual:41.21, pct:118},
+  {uf:"AM", meta:22, atual:26.04, pct:118},
+  {uf:"MS", meta:30, atual:34.27, pct:114},
+  {uf:"AL", meta:30, atual:31.44, pct:105},
+  {uf:"SE", meta:35, atual:35.75, pct:102},
+  {uf:"PA", meta:30, atual:30.7, pct:102},
+  {uf:"PE", meta:35, atual:35.39, pct:101},
+  {uf:"AP", meta:35, atual:34.23, pct:98},
+  {uf:"RO", meta:35, atual:33.15, pct:95},
+  {uf:"CE", meta:35, atual:32.58, pct:93},
+  {uf:"PI", meta:33, atual:30.7, pct:93},
+  {uf:"ES", meta:33, atual:28.24, pct:86},
+  {uf:"RS", meta:33, atual:27.29, pct:83},
+  {uf:"RJ", meta:32, atual:23.74, pct:74},
+  {uf:"MA", meta:35, atual:24.09, pct:69},
+  {uf:"PB", meta:35, atual:17.64, pct:50},
 ];
-function profColor(p){
-  if(p<80)  return {cls:"pct-red",   bar:"#D94633"};
-  if(p<100) return {cls:"pct-orange",bar:"#FF9059"};
-  return           {cls:"pct-green", bar:"#005952"};
+function pctfmt(n){return n.toLocaleString("pt-BR",{minimumFractionDigits:0,maximumFractionDigits:1});}
+function renderProf(){
+  const body=document.getElementById("uf-prof-body"); body.innerHTML="";
+  [...profData].sort((a,b)=>b.pct-a.pct).forEach(r=>{
+    const c = r.pct>=100 ? {cls:"pct-green",bar:"#005952"} : r.pct>=80 ? {cls:"pct-orange",bar:"#FF9059"} : {cls:"pct-red",bar:"#D94633"};
+    const barW=Math.min(r.pct/160*100,100);
+    const w=document.createElement("div");
+    w.innerHTML=`
+      <div class="comp-row" style="grid-template-columns:40px 1fr 1fr 56px;">
+        <span class="comp-uf">${r.uf}</span>
+        <span class="comp-num">${r.meta}%</span>
+        <span class="comp-num2">${pctfmt(r.atual)}%</span>
+        <span class="comp-pct ${c.cls}">${r.pct}%</span>
+      </div>
+      <div class="comp-bar-row"><div class="comp-bar-bg"><div class="comp-bar-fill" style="width:${barW.toFixed(0)}%;background:${c.bar};"></div></div></div>`;
+    body.appendChild(w);
+  });
 }
-renderRows("uf-prof-body", profData, "40px 1fr 1fr 56px", profColor, 200);
+renderProf();
+
+function renderPendentes(mode){
+  document.getElementById('pend-btn-exec').classList.toggle('seg-on', mode==='exec');
+  document.getElementById('pend-btn-prev').classList.toggle('seg-on', mode==='prev');
+  const f = mode==='prev' ? 'pct2' : 'pct';
+  const pcolor = v => v<50 ? '#D94633' : v<80 ? '#C9731F' : '#3A4460';
+  const sub = mode==='prev' ? '% previsto da meta repactuada' : '% executado da meta repactuada';
+  const groups = [
+    {color:'var(--azul)',  label:'Estudantes',    data:estData,  field:f,     sub:sub},
+    {color:'var(--verde)', label:'Instituições',  data:instData, field:f,     sub:sub},
+    {color:'#FF9059',      label:'Profissionais', data:profData, field:'pct', sub:'recorrência atual ÷ meta'},
+  ];
+  let html='';
+  groups.forEach(g=>{
+    const below=g.data.filter(r=>r[g.field]<100).sort((a,b)=>a[g.field]-b[g.field]);
+    const chips = below.length
+      ? below.map(r=>`<span class="pend-chip"><span class="u">${r.uf}</span><span class="p" style="color:${pcolor(r[g.field])};">${r[g.field]}%</span></span>`).join('')
+      : '<span class="pend-none">Todas as UFs atingiram ✓</span>';
+    html+=`<div class="pend-group"><div class="pend-head"><span class="pend-dot" style="background:${g.color};"></span><span class="pend-label" style="color:${g.color};">${g.label}</span><span class="pend-count">${below.length} UF${below.length!==1?'s':''} · ${g.sub}</span></div><div class="pend-chips">${chips}</div></div>`;
+  });
+  document.getElementById('pend-body').innerHTML=html;
+  const bEst=new Set(estData.filter(r=>r[f]<100).map(r=>r.uf));
+  const bInst=new Set(instData.filter(r=>r[f]<100).map(r=>r.uf));
+  const none=profData.filter(r=>r.pct<100 && bEst.has(r.uf) && bInst.has(r.uf)).map(r=>r.uf).sort();
+  document.getElementById('pend-none-count').textContent = none.length+' UF'+(none.length!==1?'s':'');
+  document.getElementById('pend-none-body').innerHTML = none.length
+    ? none.map(u=>`<span class="pend-chip" style="border-color:var(--vermelho);"><span class="u" style="color:var(--vermelho);">${u}</span></span>`).join('')
+    : '<span class="pend-none">Nenhuma — todas bateram ao menos uma meta ✓</span>';
+}
+renderPendentes('exec');
 </script>
 </body>
 </html>
